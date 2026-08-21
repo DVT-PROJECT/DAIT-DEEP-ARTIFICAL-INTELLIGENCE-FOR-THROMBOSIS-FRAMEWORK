@@ -1,0 +1,204 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #000000;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #7c3aed;
+  --accent-bg: rgba(124, 58, 237, 0.1);
+  --accent-border: rgba(124, 58, 237, 0.4);
+  --social-bg: rgba(244, 243, 236, 0.6);
+  --shadow: rgba(0, 0, 0, 0.08) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #0f111a;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #a855f7;
+    --accent-bg: rgba(168, 85, 247, 0.15);
+    --accent-border: rgba(168, 85, 247, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.6);
+    --shadow: rgba(0, 0, 0, 0.5) 0 10px 15px -3px, rgba(0, 0, 0, 0.3) 0 4px 6px -2px;
+  }
+}
+
+/* ====================== SUBTLE GRID BACKGROUND ====================== */
+body {
+  margin: 0;
+  background: var(--bg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Grid Background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(124, 58, 237, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.035) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.85;
+}
+
+/* Enhanced Root Container */
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  animation: fadeInPage 600ms ease-out;
+}
+
+/* Smooth Animations */
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero {
+  position: relative;
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Cards & Elements */
+.counter {
+  font-size: 16px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.counter:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+  padding: 40px 20px 32px;
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+  background: var(--bg);
+}
+
+#next-steps > div {
+  flex: 1 1 0;
+  padding: 32px;
+  transition: background 0.3s ease;
+}
+
+#next-steps > div:hover {
+  background: rgba(124, 58, 237, 0.04);
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+}
+
+@media (max-width: 1024px) {
+  #next-steps {
+    flex-direction: column;
+    text-align: center;
+  }
+  #docs {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  #center {
+    padding: 32px 20px 24px;
+    gap: 20px;
+  }
+}
+
+/* Typography Enhancements */
+h1, h2 {
+  font-family: var(--heading);
+  font-weight: 600;
+  color: var(--text-h);
+  transition: color 0.3s ease;
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+}
+
+h2 {
+  font-size: 24px;
+  letter-spacing: -0.24px;
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 38px;
+    margin: 24px 0;
+  }
+  h2 {
+    font-size: 21px;
+  }
+}
+
+/* General Smooth Hover Effects */
+a, button, .counter {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover, button:hover {
+  transform: translateY(-1px);
+}

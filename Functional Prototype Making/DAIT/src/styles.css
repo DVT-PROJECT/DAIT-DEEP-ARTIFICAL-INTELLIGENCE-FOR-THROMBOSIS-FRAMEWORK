@@ -1,0 +1,193 @@
+:root {
+  /* Dark Cyber-Medical Theme */
+  --bg: #0a1625;
+  --surface: #0f1f38;
+  --surface2: #13263f;
+  --border: rgba(103, 232, 249, 0.18);
+  --border-hover: rgba(103, 232, 249, 0.45);
+  
+  --text: #94a3c2;
+  --text-h: #e0f2fe;
+  --text-muted: #64748b;
+  
+  --accent: #67e8f9;           /* Cyan glow */
+  --accent2: #3b82f6;          /* Blue */
+  --accent-hover: #a5f3fc;
+  --accent-bg: rgba(103, 232, 249, 0.12);
+  --glow: 0 0 15px rgba(103, 232, 249, 0.5);
+  
+  --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
+  --glow-shadow: 0 0 25px rgba(103, 232, 249, 0.3);
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 18px/145% var(--sans);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ====================== SUBTLE TECH GRID ====================== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(103, 232, 249, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(103, 232, 249, 0.07) 1px, transparent 1px);
+  background-size: 65px 65px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.85;
+}
+
+/* ====================== DASHBOARD & HERO ====================== */
+.dashboard-root {
+  animation: dashboardFadeIn 420ms ease-out;
+}
+
+.dashboard-hero {
+  padding: 4px 2px 2px;
+  position: relative;
+}
+
+.dashboard-surface {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  transition: all 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow);
+}
+
+.dashboard-surface:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glow-shadow), var(--shadow);
+  border-color: var(--border-hover);
+  background: var(--surface2);
+}
+
+.dashboard-tabs {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(15, 31, 56, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+/* Accent Underline */
+.dashboard-section-title {
+  position: relative;
+  color: var(--text-h);
+}
+
+.dashboard-section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 8px var(--accent);
+}
+
+/* Buttons */
+.dashboard-action-btn {
+  transition: all 180ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow);
+  background: var(--accent-bg);
+  color: var(--accent-hover);
+}
+
+/* Cards */
+.dashboard-preview-card,
+.dashboard-results-card {
+  transition: all 220ms ease;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+}
+
+.dashboard-preview-card:hover,
+.dashboard-results-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--glow-shadow), 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+  border-color: var(--accent);
+}
+
+/* Table */
+.dashboard-history-table .MuiTableBody-root .MuiTableRow-root:hover {
+  background-color: rgba(103, 232, 249, 0.08);
+}
+
+/* Animations */
+@keyframes dashboardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(103, 232, 249, 0.4); }
+  50% { box-shadow: 0 0 30px rgba(103, 232, 249, 0.7); }
+}
+
+/* Enhanced Root Container */
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  animation: fadeInPage 700ms ease-out;
+}
+
+@keyframes fadeInPage {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Typography */
+h1 {
+  font-size: 52px;
+  letter-spacing: -2px;
+  font-weight: 700;
+  color: var(--text-h);
+  text-shadow: 0 0 20px rgba(103, 232, 249, 0.3);
+}
+
+h2 {
+  font-size: 26px;
+  color: var(--text-h);
+}
+
+/* Accent Elements */
+.counter {
+  background: var(--accent-bg);
+  border: 2px solid rgba(103, 232, 249, 0.3);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.counter:hover {
+  border-color: var(--accent);
+  box-shadow: var(--glow);
+}

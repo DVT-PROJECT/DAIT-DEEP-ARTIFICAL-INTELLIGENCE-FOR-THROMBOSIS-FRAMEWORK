@@ -1,0 +1,69 @@
+.study-results-page {
+  position: relative;
+}
+
+.study-results-page::before {
+  content: '';
+  position: absolute;
+  inset: -24px -18px auto;
+  height: 220px;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(0, 230, 210, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 230, 210, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.results-overview,
+.result-image-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.results-overview::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(#00e6d2, #38bdf8);
+}
+
+.muted-divider {
+  color: rgba(148, 163, 184, 0.55);
+  margin: 0 4px;
+}
+
+.results-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.summary-metric {
+  min-height: 76px;
+  padding: 12px 14px;
+  border: 1px solid rgba(125, 211, 252, 0.13);
+  border-radius: 12px;
+  background: rgba(8, 30, 52, 0.62);
+}
+
+.summary-metric-alert { border-color: rgba(244, 63, 94, 0.28); }
+.summary-metric-calm { border-color: rgba(34, 197, 94, 0.24); }
+.summary-metric-focus { border-color: rgba(0, 230, 210, 0.3); }
+
+.result-image-card {
+  border-color: rgba(0, 230, 210, 0.14) !important;
+}
+
+@media (max-width: 600px) {
+  .results-summary-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .study-results-page::before,
+  .study-results-page button,
+  .study-results-page .MuiAlert-root { display: none !important; }
+  .study-results-page { color: #111 !important; }
+  .result-image-card, .results-overview { break-inside: avoid; box-shadow: none !important; border: 1px solid #bbb !important; }
+}

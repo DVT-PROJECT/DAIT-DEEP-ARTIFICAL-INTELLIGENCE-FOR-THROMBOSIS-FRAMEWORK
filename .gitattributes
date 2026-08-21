@@ -1,0 +1,2 @@
+EXE.zip filter=lfs diff=lfs merge=lfs -text
+DAIT/backend/model/thrombus_model.keras filter=lfs diff=lfs merge=lfs -text

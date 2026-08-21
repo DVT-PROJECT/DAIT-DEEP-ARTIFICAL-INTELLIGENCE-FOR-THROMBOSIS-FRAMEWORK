@@ -1,0 +1,163 @@
+/* ====================== DASHBOARD.CSS - Dark Cyber Medical AI Theme ====================== */
+
+:root {
+  /* Core Colors */
+  --bg: #0a1625;
+  --surface: #0f1f38;
+  --surface2: #13263f;
+  --border: rgba(103, 232, 249, 0.18);
+  --border-hover: rgba(103, 232, 249, 0.45);
+  
+  --text: #94a3c2;
+  --text-h: #e0f2fe;
+  --text-muted: #64748b;
+  
+  --accent: #67e8f9;        /* Cyan Glow */
+  --accent2: #3b82f6;       /* Blue */
+  --accent-hover: #a5f3fc;
+  --accent-bg: rgba(103, 232, 249, 0.12);
+  
+  --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
+  --glow: 0 0 20px rgba(103, 232, 249, 0.4);
+  --glow-strong: 0 0 30px rgba(103, 232, 249, 0.6);
+}
+
+.dashboard-root {
+  animation: dashboardFadeIn 420ms ease-out;
+}
+
+/* Hero Section */
+.dashboard-hero {
+  padding: 4px 2px 2px;
+  position: relative;
+}
+
+/* Tabs */
+.dashboard-tabs {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(15, 31, 56, 0.65);
+  backdrop-filter: blur(12px);
+}
+
+/* Main Surface Cards */
+.dashboard-surface {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  transition: all 220ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  box-shadow: var(--shadow);
+}
+
+.dashboard-surface:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glow-strong), var(--shadow);
+  border-color: var(--border-hover);
+  background: var(--surface2);
+}
+
+.dashboard-tabs:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: var(--border);
+  background: rgba(15, 31, 56, 0.75);
+}
+
+.analytics-panel {
+  background:
+    linear-gradient(135deg, rgba(8, 39, 59, 0.94), rgba(8, 20, 38, 0.92)),
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(103, 232, 249, 0.035) 32px),
+    repeating-linear-gradient(90deg, transparent 0 31px, rgba(103, 232, 249, 0.035) 32px);
+}
+
+/* Section Titles */
+.dashboard-section-title {
+  position: relative;
+  color: var(--text-h);
+  margin-bottom: 16px;
+}
+
+.dashboard-section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3.5px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* Action Buttons */
+.dashboard-action-btn {
+  transition: all 180ms ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.dashboard-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow);
+  background: var(--accent-bg);
+  color: var(--accent-hover);
+  border-color: var(--accent);
+}
+
+/* Preview & Results Cards */
+.dashboard-preview-card,
+.dashboard-results-card {
+  transition: all 240ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  border-radius: 16px;
+}
+
+.dashboard-preview-card:hover,
+.dashboard-results-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: var(--glow-strong), 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  border-color: var(--accent);
+}
+
+/* History Table */
+.dashboard-history-table .MuiTableRow-root {
+  transition: background-color 160ms ease;
+}
+
+.dashboard-history-table .MuiTableBody-root .MuiTableRow-root:hover {
+  background-color: rgba(103, 232, 249, 0.09);
+}
+
+/* ====================== ANIMATIONS ====================== */
+
+@keyframes dashboardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Extra Glow Animation for Important Elements */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: var(--glow); }
+  50% { box-shadow: var(--glow-strong); }
+}
+
+/* Optional: Add this class to glowing elements */
+.glow-element {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ====================== RESPONSIVE ====================== */
+@media (max-width: 1024px) {
+  .dashboard-surface,
+  .dashboard-preview-card,
+  .dashboard-results-card {
+    border-radius: 14px;
+  }
+}
